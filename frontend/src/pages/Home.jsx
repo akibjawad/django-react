@@ -14,7 +14,7 @@ function Home() {
 
     const getProjects = () => {
         api
-            .get("/api/notes/")
+            .get("/api/projects/")
             .then((res) => res.data)
             .then((data) => {
                 setProjects(data);
@@ -25,10 +25,10 @@ function Home() {
 
     const deleteProject = (id) => {
         api
-            .delete(`/api/notes/delete/${id}/`)
+            .delete(`/api/projects/delete/${id}/`)
             .then((res) => {
-                if (res.status === 204) alert("Note deleted!");
-                else alert("Failed to delete note.");
+                if (res.status === 204) alert("Project deleted!");
+                else alert("Failed to delete Project.");
                 getProjects();
             })
             .catch((error) => alert(error));
@@ -37,10 +37,10 @@ function Home() {
     const createProject = (e) => {
         e.preventDefault();
         api
-            .post("/api/notes/", { content, title })
+            .post("/api/projects/", { content, title })
             .then((res) => {
-                if (res.status === 201) alert("Note created!");
-                else alert("Failed to make note.");
+                if (res.status === 201) alert("Project created!");
+                else alert("Failed to make project.");
                 getProjects();
             })
             .catch((err) => alert(err));
