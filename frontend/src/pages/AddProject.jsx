@@ -8,7 +8,7 @@ import Navbar from '../components/Navbar';
 function AddProject() {
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
-    const [giturl, setGitURL] = useState("");
+    const [giturl, setGitURL] = useState("#");
 
     // const [supDoc, setSupDoc] = useState(null);
 
