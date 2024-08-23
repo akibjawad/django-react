@@ -1,47 +1,47 @@
 import { useState, useEffect } from "react";
 import api from "../api";
-import Note from "../components/Note"
 import "../styles/Home.css"
+import Project from "../components/Project";
 
 function Home() {
-    const [notes, setNotes] = useState([]);
+    const [projects, setProjects] = useState([]);
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
 
     useEffect(() => {
-        getNotes();
+        getProjects();
     }, []);
 
-    const getNotes = () => {
+    const getProjects = () => {
         api
             .get("/api/notes/")
             .then((res) => res.data)
             .then((data) => {
-                setNotes(data);
+                setProjects(data);
                 console.log(data);
             })
             .catch((err) => alert(err));
     };
 
-    const deleteNote = (id) => {
+    const deleteProject = (id) => {
         api
             .delete(`/api/notes/delete/${id}/`)
             .then((res) => {
                 if (res.status === 204) alert("Note deleted!");
                 else alert("Failed to delete note.");
-                getNotes();
+                getProjects();
             })
             .catch((error) => alert(error));
     };
 
-    const createNote = (e) => {
+    const createProject = (e) => {
         e.preventDefault();
         api
             .post("/api/notes/", { content, title })
             .then((res) => {
                 if (res.status === 201) alert("Note created!");
                 else alert("Failed to make note.");
-                getNotes();
+                getProjects();
             })
             .catch((err) => alert(err));
     };
@@ -49,13 +49,13 @@ function Home() {
     return (
         <div>
             <div>
-                <h2>Notes</h2>
-                {notes.map((note) => (
-                    <Note note={note} onDelete={deleteNote} key={note.id} />
+                <h2>Projects</h2>
+                {projects.map((project) => (
+                    <Project project={project} onDelete={deleteProject} key={project.id} />
                 ))}
             </div>
-            <h2>Create a Note</h2>
-            <form onSubmit={createNote}>
+            <h2>Create a Project</h2>
+            <form onSubmit={createProject}>
                 <label htmlFor="title">Title:</label>
                 <br />
                 <input
