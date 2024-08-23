@@ -3,11 +3,18 @@ import api from "../api";
 import "../styles/Home.css"
 import Project from "../components/Project";
 import Navbar from "../components/Navbar";
+import AddProject from "./AddProject";
+
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 function Home() {
     const [projects, setProjects] = useState([]);
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
+
+    const [isAddProjectOpen, setIsAddProjectOpen] = useState(false);
 
     useEffect(() => {
         getProjects();
@@ -50,6 +57,19 @@ function Home() {
     return (
         <div>
             <Navbar />
+            <button className="button" onClick={() => setIsAddProjectOpen(true)}>
+                Add Project(+)
+            </button>
+            <Modal
+                isOpen={isAddProjectOpen}
+                onRequestClose={() => setIsAddProjectOpen(false)}
+                contentLabel="Add Project"
+                className="modal"
+                overlayClassName="overlay"
+            >
+                <button onClick={() => setIsAddProjectOpen(false)} className="close-button">X</button>
+                <AddProject />
+            </Modal>
             <div>
                 <h2>Projects</h2>
                 {projects.map((project) => (

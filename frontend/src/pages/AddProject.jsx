@@ -12,7 +12,7 @@ function AddProject() {
     const navigate = useNavigate();
 
     const createProject = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         api
             .post("/api/projects/", { content, title })
             .then((res) => {
@@ -24,9 +24,8 @@ function AddProject() {
     };
 
     return (
-        <>
-            {<Navbar />}
-            <h1>Create a Project</h1>
+        <div className="project-container">
+            <h1 className='heading' >Create a Project</h1>
             <form onSubmit={createProject}>
                 <label htmlFor="title">Title:</label>
                 <br />
@@ -50,7 +49,7 @@ function AddProject() {
                 <br />
                 <input type="submit" value="Submit"></input>
             </form>
-        </>
+        </div>
     );
 }
 

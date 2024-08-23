@@ -10,6 +10,7 @@ div {
 
 .projects-section h2 {
   color: #333;
+  text-align: center;
   font-size: 24px;
 }
 
@@ -22,47 +23,44 @@ div {
   border-radius: 5px;
 }
 
-/* Styles for the form section */
-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  margin: auto;
-}
-
-form h2 {
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-form label {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-form input[type="submit"] {
-  background-color: #007bff;
-  color: white;
+.button {
+  margin: 10px;
   padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
   font-size: 16px;
+  cursor: pointer;
 }
 
-form input[type="submit"]:hover {
-  background-color: #0056b3;
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
