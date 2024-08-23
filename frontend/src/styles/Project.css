@@ -18,6 +18,18 @@
   font-size: 0.8rem;
 }
 
+.github-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #333;  /* GitHub dark gray */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
 .delete-button {
   background-color: #f44336; /* Red */
   color: white;

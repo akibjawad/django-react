@@ -18,5 +18,5 @@ class UserSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ["id", "title", "content", "created_at", "author"]
+        fields = ["id", "title", "content", "created_at", "author", "giturl"]
         extra_kwargs = {"author": {"read_only": True}}
