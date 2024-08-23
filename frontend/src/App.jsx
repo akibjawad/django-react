@@ -6,10 +6,12 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 import Navbar from './components/Navbar';
+import Auth from "./pages/Auth"
+import AddProject from "./pages/AddProject"
 
 function Logout() {
   localStorage.clear()
-  return <Navigate to="/login" />
+  return <Navigate to="/auth" />
 }
 
 function RegisterAndLogout() {
@@ -20,7 +22,6 @@ function RegisterAndLogout() {
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -32,7 +33,9 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path='/addproject' element={ <ProtectedRoute> <AddProject/> </ProtectedRoute>} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>

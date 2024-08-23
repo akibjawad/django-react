@@ -8,20 +8,17 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link to="/">Projects</Link>
+        <Link to="/">Project Showcase</Link>
       </div>
       <ul className="nav-links">
         <li>
-          <Link to="/">Projects</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="#">About</Link>
+          <Link to="/addproject">Add a New Project</Link>
         </li>
         <li>
-          <Link to="#">Services</Link>
-        </li>
-        <li>
-          <Link to="#">Contact</Link>
+          <Link to="/logout">Logout</Link>
         </li>
       </ul>
     </nav>
