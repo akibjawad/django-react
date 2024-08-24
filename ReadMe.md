@@ -23,10 +23,27 @@ Backend of this website supports the frontend with 2 `API` endpoints:
 Just like the Frontend, I tried to keep most commonly used practice of Django development such as creating Serializers, Models, and Views.
 I tested out multiple database engines, but eventually I settled for the default `sqlite` db to keep the simplicity of this project.
 
-## Run and Deployment
+## Run the project locally
 
-At the same time I deployed this website 
+Two run locally, from the project root we need to go the backend directory and run the `run-local.sh` script. Commands are provided below.
 
+```
+cd backend
+chmod +x ./run-local.sh
+./run-local.sh
+```
+
+After starting backend, user also need to run the frontend. To run the front end user simply need to run the `run.sh` script in the front end directory.
+Commands to run the frontend from the project root directory is provided below.
+
+```
+chmod +x ./run.sh
+cd frontend
+./run.sh
+```
+
+## Deploying it on AWS
+I deployed the Django server on 
 
 
 
