@@ -43,7 +43,16 @@ cd frontend
 ```
 
 ## Deploying it on AWS
-I deployed the Django server on 
+I deployed the backend (Django server) on an AWS EC2 while the frontend (React App) on an AWS S3 site. I used both of AWS service as a FREE-Tier service. Whole website can be found at [http://ajreactdemo.s3-website-us-west-2.amazonaws.com](http://ajreactdemo.s3-website-us-west-2.amazonaws.com)
+
+
+My deployment architecture is also provided in the following image for better clarrification. 
+
+
+![Deployment Architecture](./deployment.png)
+
+
+
 
 
 
