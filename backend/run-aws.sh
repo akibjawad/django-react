@@ -4,9 +4,10 @@ sudo apt install python3-venv
 
 lsoutput=$(ls ./venv 2> /dev/null)
 lsReturnCode=$?
-if [ $lsReturnCode != 0 ]; then 
+if [ $lsReturnCode == 0 ]; then 
     rm -r ./venv
 fi
+python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
@@ -17,25 +18,25 @@ python manage.py collectstatic
 
 pip install gunicorn
 
- 
-NGINX_CONFIG="server {
-    listen 80;
-    server_name 34.216.141.140;
+sudo cp ./gunicorn.socket /etc/systemd/system/gunicorn.socket
+sudo cp ./gunicorn.service /etc/systemd/system/gunicorn.service
 
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location /static/ {
-        root /home/ubuntu/django-react/backend/static/;
-    }
 
-    location / {
-        proxy_pass http://127.0.0.1:8000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}"
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
 
-echo "$CONTENT" | sudo tee /etc/nginx/sites-available/backend
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+
+
+
+
+sudo echo "${NGINX_CONFIG}" > /etc/nginx/sites-available/backend
+
+sudo cp nginx_sites_enabled.config /etc/nginx/sites-available/backend
+
+sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled
+sudo nginx -t
+sudo systemctl restart nginx
 
 
